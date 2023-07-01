@@ -1,5 +1,19 @@
-public abstract class Infantry extends BasicHero{
-    public Infantry(int id, String name, String heroType, int healthLevel, int baseAttack, int initiative) {
-        super(id, name, heroType, healthLevel, baseAttack, initiative);
+public abstract class Infantry extends BasicHero {
+    public Infantry(int id, String name, String heroType, int healthLevel, int initiative, int baseAttack) {
+        super(id, name, heroType, healthLevel, initiative);
+        this.baseAttack = baseAttack;
     }
+
+    int baseAttack;
+
+    @Override
+    public String toString() {
+        return ("ID: " + id + ", "
+                + "Name: " + name + ", "
+                + "Type: " + heroType + ", "
+                + "Health: " + HealthLevel + ", "
+                + "Initiative: " + initiative + ", "
+                + "Attack: " + baseAttack);
+    }
+
 }

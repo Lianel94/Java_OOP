@@ -1,11 +1,10 @@
-public abstract class Wizard extends BasicHero {
-
-    public Wizard(int id, String name, String heroType, int healthLevel, int initiative, int manaLevel) {
+public abstract class Farmers extends BasicHero {
+    public Farmers(int id, String name, String heroType, int healthLevel, int initiative, int baseAttack) {
         super(id, name, heroType, healthLevel, initiative);
-        this.manaLevel = manaLevel;
+        this.baseAttack = baseAttack;
     }
 
-    int manaLevel;
+    int baseAttack;
 
     @Override
     public String toString() {
@@ -14,7 +13,6 @@ public abstract class Wizard extends BasicHero {
                 + "Type: " + heroType + ", "
                 + "Health: " + HealthLevel + ", "
                 + "Initiative: " + initiative + ", "
-                + "Mana: " + manaLevel);
+                + "Attack: " + baseAttack);
     }
-
 }
