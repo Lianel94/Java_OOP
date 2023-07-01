@@ -7,7 +7,7 @@ public abstract class Infantry extends BasicHero {
     int baseAttack;
 
     @Override
-    public String toString() {
+    public String getInfo() {
         return ("ID: " + id + ", "
                 + "Name: " + name + ", "
                 + "Type: " + heroType + ", "
@@ -15,5 +15,7 @@ public abstract class Infantry extends BasicHero {
                 + "Initiative: " + initiative + ", "
                 + "Attack: " + baseAttack);
     }
+    @Override
+    public void step() {}
 
 }

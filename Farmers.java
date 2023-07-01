@@ -7,7 +7,7 @@ public abstract class Farmers extends BasicHero {
     int baseAttack;
 
     @Override
-    public String toString() {
+    public String getInfo() {
         return ("ID: " + id + ", "
                 + "Name: " + name + ", "
                 + "Type: " + heroType + ", "
@@ -15,4 +15,6 @@ public abstract class Farmers extends BasicHero {
                 + "Initiative: " + initiative + ", "
                 + "Attack: " + baseAttack);
     }
+    @Override
+    public void step() {}
 }

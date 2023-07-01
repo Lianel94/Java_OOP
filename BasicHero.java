@@ -1,4 +1,4 @@
-public abstract class BasicHero {
+public abstract class BasicHero implements Actions {
     int id;
     String name;
     String heroType;
@@ -14,7 +14,7 @@ public abstract class BasicHero {
     }
 
     @Override
-    public String toString() {
+    public String getInfo() {
         return ("ID: " + id + ", "
                 + "Name: " + name + ", "
                 + "Type: " + heroType + ", "
@@ -22,4 +22,6 @@ public abstract class BasicHero {
                 + "Initiative: " + initiative);
     }
 
+    @Override
+    public void step() {}
 }
