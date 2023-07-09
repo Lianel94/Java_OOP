@@ -1,6 +1,7 @@
 import units.*;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.Random;
 
 public class Program {
@@ -43,13 +44,27 @@ public class Program {
             }
         }
 
+        ArrayList<BasicHero> united = new ArrayList<>();
+        united.addAll(alliance);
+        united.addAll(horde);
+        united.sort((o1, o2) -> o2.getInitiative() - o1.getInitiative());
+
         alliance.forEach(n -> System.out.println("Alliance: " + n.getInfo()));
         horde.forEach(n -> System.out.println("Horde: " + n.getInfo()));
 
-        System.out.println("The Alliance's enemies:");
-        alliance.forEach(n -> n.step(horde));
-        System.out.println("The Horde's enemies:");
-        horde.forEach(n -> n.step(alliance));
+        for(BasicHero item: united){
+            if(alliance.contains(item)){
+                item.step(horde, alliance);
+            } else {
+                item.step(alliance, horde);
+            }
+            System.out.println(item.getInitiative());
+        }
+
+        System.out.println("_".repeat(25));
+
+        alliance.forEach(n -> System.out.println("Alliance: " + n.getInfo()));
+        horde.forEach(n -> System.out.println("Horde: " + n.getInfo()));
 
     }
     private static String getName(){

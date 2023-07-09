@@ -23,8 +23,7 @@ public abstract class Infantry extends BasicHero {
     }
 
     @Override
-    public void step(ArrayList<BasicHero> enemies) {
-        int[] temp = findNearEnemy(enemies);
-        System.out.println("The distance: " + temp[0] + " The enemy's name: " + enemies.get(temp[1]).name);
+    public void step(ArrayList<BasicHero> enemies, ArrayList<BasicHero> ours) {
+
     }
 }

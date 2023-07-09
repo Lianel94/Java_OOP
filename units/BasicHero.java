@@ -7,7 +7,11 @@ public abstract class BasicHero implements Actions {
     String name;
     String heroType;
     int HealthLevel;
-    int initiative;
+    protected int initiative;
+
+    public int getInitiative(){
+        return initiative;
+    }
 
     protected Coordinates place;
 
@@ -29,7 +33,7 @@ public abstract class BasicHero implements Actions {
                 + "Initiative: " + initiative);
     }
 
-    protected int[] findNearEnemy(ArrayList<BasicHero> enemies) {
+    protected BasicHero findNearEnemy(ArrayList<BasicHero> enemies) {
         double min = 10000;
         int count = 0;
         for (int i = 0; i < enemies.size(); i++) {
@@ -38,6 +42,6 @@ public abstract class BasicHero implements Actions {
                 count = i;
             }
         }
-        return new int[]{(int) Math.round(min), count};
+        return enemies.get(count);
     }
 }
