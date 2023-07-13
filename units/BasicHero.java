@@ -24,13 +24,12 @@ public abstract class BasicHero implements Actions {
         place = new Coordinates(x, y);
     }
 
-    @Override
-    public String getInfo() {
-        return ("ID: " + id + ", "
-                + "Name: " + name + ", "
-                + "Type: " + heroType + ", "
-                + "Health: " + HealthLevel + ", "
-                + "Initiative: " + initiative);
+    public Coordinates getPlace(){
+        return place;
+    }
+
+    public int getHealthLevel() {
+        return HealthLevel;
     }
 
     protected BasicHero findNearEnemy(ArrayList<BasicHero> enemies) {
@@ -43,5 +42,10 @@ public abstract class BasicHero implements Actions {
             }
         }
         return enemies.get(count);
+    }
+
+    @Override
+    public String toString() {
+        return super.getClass().getSimpleName();
     }
 }

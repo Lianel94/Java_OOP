@@ -12,18 +12,17 @@ public abstract class Farmers extends BasicHero {
 
     @Override
     public String getInfo() {
-        return ("ID: " + id + ", "
-                + "Name: " + name + ", "
-                + "Type: " + heroType + ", "
-                + "Health: " + HealthLevel + ", "
-                + "Initiative: " + initiative + ", "
-                + "Attack: " + baseAttack + ", "
-                + "X: " + place.x + ", "
-                + "Y: " + place.y);
+        return (name + ", "
+                + heroType + ", "
+                + "♥" + HealthLevel + ", "
+                + "In: " + initiative + ", "
+                + "\u2694" + baseAttack);
     }
+
+    public boolean busy = false;
 
     @Override
     public void step(ArrayList<BasicHero> enemies, ArrayList<BasicHero> ours) {
-
+        if(this.HealthLevel > 0) this.busy = false;
     }
 }

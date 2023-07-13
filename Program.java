@@ -5,52 +5,54 @@ import java.util.Comparator;
 import java.util.Random;
 
 public class Program {
+    static ArrayList<BasicHero> united = new ArrayList<>();
+    static ArrayList<BasicHero> alliance = new ArrayList<>();
+    static ArrayList<BasicHero> horde = new ArrayList<>();
     public static void main(String[] args) {
 
-        ArrayList<BasicHero> alliance = new ArrayList<>();
-        ArrayList<BasicHero> horde = new ArrayList<>();
-
-        for (int i = 0; i < 10; i++) {
+        for (int i = 1; i < 11; i++) {
             int character = new Random().nextInt(0, 7);
             switch (character) {
                 case 0:
-                    alliance.add(new Magician(getName(), 0, new Random().nextInt(0, 50)));
-                    horde.add(new Rogue(getName(), 9, new Random().nextInt(0, 50)));
+                    alliance.add(new Magician(getName(), 1, i));
+                    horde.add(new Rogue(getName(), 10, i));
                     break;
                 case 1:
-                    alliance.add(new Monk(getName(), 0, new Random().nextInt(0, 50)));
-                    horde.add(new Magician(getName(), 9, new Random().nextInt(0, 50)));
+                    alliance.add(new Monk(getName(), 1, i));
+                    horde.add(new Magician(getName(), 10, i));
                     break;
                 case 2:
-                    alliance.add(new Rogue(getName(), 0, new Random().nextInt(0, 50)));
-                    horde.add(new Lancer(getName(), 9, new Random().nextInt(0, 50)));
+                    alliance.add(new Rogue(getName(), 1, i));
+                    horde.add(new Lancer(getName(), 10, i));
                     break;
                 case 3:
-                    alliance.add(new Lancer(getName(),0, new Random().nextInt(0, 50)));
-                    horde.add(new CrossbowMan(getName(), 9, new Random().nextInt(0, 50)));
+                    alliance.add(new Lancer(getName(),1, i));
+                    horde.add(new CrossbowMan(getName(), 10, i));
                     break;
                 case 4:
-                    alliance.add(new Sniper(getName(),0, new Random().nextInt(0, 50)));
-                    horde.add(new Monk(getName(), 9, new Random().nextInt(0, 50)));
+                    alliance.add(new Sniper(getName(),1, i));
+                    horde.add(new Monk(getName(), 10, i));
                     break;
                 case 5:
-                    alliance.add(new CrossbowMan(getName(),0, new Random().nextInt(0, 50)));
-                    horde.add(new Sniper(getName(), 9, new Random().nextInt(0, 50)));
+                    alliance.add(new CrossbowMan(getName(),1, i));
+                    horde.add(new Sniper(getName(), 10, i));
                     break;
                 default:
-                    alliance.add(new Peasant(getName(),0, new Random().nextInt(0, 50)));
-                    horde.add(new Peasant(getName(), 9, new Random().nextInt(0, 50)));
+                    alliance.add(new Peasant(getName(),1, i));
+                    horde.add(new Peasant(getName(), 10, i));
 
             }
         }
 
-        ArrayList<BasicHero> united = new ArrayList<>();
+
         united.addAll(alliance);
         united.addAll(horde);
         united.sort((o1, o2) -> o2.getInitiative() - o1.getInitiative());
 
-        alliance.forEach(n -> System.out.println("Alliance: " + n.getInfo()));
-        horde.forEach(n -> System.out.println("Horde: " + n.getInfo()));
+//        alliance.forEach(n -> System.out.println("Alliance: " + n.getInfo()));
+//        horde.forEach(n -> System.out.println("Horde: " + n.getInfo()));
+
+        View.view();
 
         for(BasicHero item: united){
             if(alliance.contains(item)){
@@ -58,13 +60,15 @@ public class Program {
             } else {
                 item.step(alliance, horde);
             }
-            System.out.println(item.getInitiative());
+//            System.out.println(item.getInitiative());
         }
 
-        System.out.println("_".repeat(25));
+        View.view();
 
-        alliance.forEach(n -> System.out.println("Alliance: " + n.getInfo()));
-        horde.forEach(n -> System.out.println("Horde: " + n.getInfo()));
+//        System.out.println("_".repeat(25));
+//
+//        alliance.forEach(n -> System.out.println("Alliance: " + n.getInfo()));
+//        horde.forEach(n -> System.out.println("Horde: " + n.getInfo()));
 
     }
     private static String getName(){
