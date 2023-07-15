@@ -32,11 +32,21 @@ public abstract class BasicHero implements Actions {
         return HealthLevel;
     }
 
+    protected void getDamage(float damage){
+        this.HealthLevel -= damage;
+        if (HealthLevel < 0) HealthLevel = 0;
+    }
+
+    protected void getHealed(float heal){
+        this.HealthLevel += heal;
+        if (HealthLevel > 100) HealthLevel = 100;
+    }
+
     protected BasicHero findNearEnemy(ArrayList<BasicHero> enemies) {
         double min = 10000;
         int count = 0;
         for (int i = 0; i < enemies.size(); i++) {
-            if (place.calcDistance(enemies.get(i).place) < min) {
+            if (place.calcDistance(enemies.get(i).place) < min & enemies.get(i).HealthLevel > 0) {
                 min = place.calcDistance(enemies.get(i).place);
                 count = i;
             }

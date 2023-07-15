@@ -3,11 +3,13 @@ import units.*;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Random;
+import java.util.Scanner;
 
 public class Program {
     static ArrayList<BasicHero> united = new ArrayList<>();
     static ArrayList<BasicHero> alliance = new ArrayList<>();
     static ArrayList<BasicHero> horde = new ArrayList<>();
+
     public static void main(String[] args) {
 
         for (int i = 1; i < 11; i++) {
@@ -26,19 +28,19 @@ public class Program {
                     horde.add(new Lancer(getName(), 10, i));
                     break;
                 case 3:
-                    alliance.add(new Lancer(getName(),1, i));
+                    alliance.add(new Lancer(getName(), 1, i));
                     horde.add(new CrossbowMan(getName(), 10, i));
                     break;
                 case 4:
-                    alliance.add(new Sniper(getName(),1, i));
+                    alliance.add(new Sniper(getName(), 1, i));
                     horde.add(new Monk(getName(), 10, i));
                     break;
                 case 5:
-                    alliance.add(new CrossbowMan(getName(),1, i));
+                    alliance.add(new CrossbowMan(getName(), 1, i));
                     horde.add(new Sniper(getName(), 10, i));
                     break;
                 default:
-                    alliance.add(new Peasant(getName(),1, i));
+                    alliance.add(new Peasant(getName(), 1, i));
                     horde.add(new Peasant(getName(), 10, i));
 
             }
@@ -49,29 +51,22 @@ public class Program {
         united.addAll(horde);
         united.sort((o1, o2) -> o2.getInitiative() - o1.getInitiative());
 
-//        alliance.forEach(n -> System.out.println("Alliance: " + n.getInfo()));
-//        horde.forEach(n -> System.out.println("Horde: " + n.getInfo()));
-
+        Scanner scan = new Scanner(System.in);
         View.view();
-
-        for(BasicHero item: united){
-            if(alliance.contains(item)){
-                item.step(horde, alliance);
-            } else {
-                item.step(alliance, horde);
+        while (true) {
+            scan.nextLine();
+            for (BasicHero item : united) {
+                if (alliance.contains(item)) {
+                    item.step(horde, alliance);
+                } else {
+                    item.step(alliance, horde);
+                }
             }
-//            System.out.println(item.getInitiative());
+            View.view();
         }
-
-        View.view();
-
-//        System.out.println("_".repeat(25));
-//
-//        alliance.forEach(n -> System.out.println("Alliance: " + n.getInfo()));
-//        horde.forEach(n -> System.out.println("Horde: " + n.getInfo()));
-
     }
-    private static String getName(){
+
+    private static String getName() {
         String s = String.valueOf(Names.values()[new Random().nextInt(Names.values().length)]);
         return s;
     }
